@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   DSC — Skate-mag tokens
+   Governed by .claude/skills/frontend-design + .claude/skills/dsc-design
+   ========================================================================= */
+
+@layer base {
+  :root {
+    /* Foundation: newsprint paper + ink */
+    --paper: 38 36% 94%;          /* off-white newsprint */
+    --ink: 0 0% 7%;               /* near-black */
+
+    /* Punch palette (three hue families, used with restraint) */
+    --primary: 14 92% 53%;        /* Patta orange / hot warm */
+    --accent: 78 88% 52%;         /* acid lime */
+    --highlight: 50 100% 60%;     /* marker yellow — sticker/tape only */
+    --secondary-punch: 332 84% 58%;/* hot pink — used very sparingly */
+
+    /* Semantic shadcn-compatible aliases (so existing components keep working) */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: 0 0% 100%;
+    --card-foreground: var(--ink);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--ink);
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 30% 88%;       /* paper, slightly darker */
+    --secondary-foreground: var(--ink);
+    --muted: 38 24% 88%;
+    --muted-foreground: 0 0% 28%;
+    --accent-foreground: var(--ink);
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders: ink, not grey. This is where the "stamped" feel comes from. */
+    --border: var(--ink);
+    --input: var(--ink);
+    --ring: var(--primary);
+
+    /* Radius: minimal. Cards look stamped, not floating. */
+    --radius: 0.125rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    /* Newsprint background: subtle warm paper texture via layered gradients + noise */
+    background-color: hsl(var(--paper));
+    background-image:
+      radial-gradient(at 20% 10%, hsl(38 50% 90% / 0.5) 0px, transparent 50%),
+      radial-gradient(at 80% 90%, hsl(14 70% 92% / 0.3) 0px, transparent 50%);
+  }
+  body {
+    @apply bg-transparent text-foreground antialiased;
+    font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv11' 1;
+  }
+  /* Newsprint grain overlay — layered via ::before so it doesn't block clicks */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+  /* Hindi/Devanagari glyphs always use the Devanagari font, regardless of what wraps them */
+  :lang(hi),
+  .font-display {
+    font-feature-settings: 'liga' 1, 'calt' 1;
+  }
+  /* Selection: ink on primary */
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--paper));
+  }
+}
+
+@layer utilities {
+  /* Hard offset shadows — the zine convention. No blur. */
+  .shadow-mag {
+    box-shadow: 6px 6px 0 0 hsl(var(--ink));
+  }
+  .shadow-mag-sm {
+    box-shadow: 3px 3px 0 0 hsl(var(--ink));
+  }
+  .shadow-mag-lg {
+    box-shadow: 10px 10px 0 0 hsl(var(--ink));
+  }
+  .shadow-mag-primary {
+    box-shadow: 6px 6px 0 0 hsl(var(--primary));
+  }
+  .shadow-mag-accent {
+    box-shadow: 6px 6px 0 0 hsl(var(--accent));
+  }
+  .border-ink {
+    border-color: hsl(var(--ink));
+  }
+  /* Newsprint headline: very tight tracking */
+  .tracking-headline {
+    letter-spacing: -0.04em;
+  }
+  /* Vertical text for marginalia */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+  }
+}
+
+/* =========================================================================
+   Animations
+   ========================================================================= */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes sticker-pop {
+  0%   { transform: scale(0.8) rotate(var(--rot, -4deg)); opacity: 0; }
+  60%  { transform: scale(1.05) rotate(var(--rot, -4deg)); opacity: 1; }
+  100% { transform: scale(1) rotate(var(--rot, -4deg)); opacity: 1; }
+}
+
+@keyframes hero-rise {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee-fast {
+  animation: marquee 20s linear infinite;
+}
+.animate-sticker-pop {
+  animation: sticker-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.animate-hero-rise {
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-fast,
+  .animate-sticker-pop,
+  .animate-hero-rise {
+    animation: none;
+  }
+}

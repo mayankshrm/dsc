@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(yarn dev 2>&1)",
+      "PowerShell($pages = @\\('/', '/about', '/events', '/contact', '/this-does-not-exist'\\); foreach \\($p in $pages\\) { try { $r = Invoke-WebRequest -Uri \"http://localhost:3000$p\" -UseBasicParsing -TimeoutSec 30; \"$p -> $\\($r.StatusCode\\)  \\($\\([math]::Round\\($r.RawContentLength/1024,1\\)\\) KB\\)\" } catch { \"$p -> ERROR: $\\($_.Exception.Message.Split\\([Environment]::NewLine\\)[0]\\)\" } })",
+      "PowerShell($h = \\(Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing\\).Content; \"Has 'दिल्ली': $\\($h -match 'दिल्ली'\\)\"; \"Has 'Skating Community': $\\($h -match 'Skating Community'\\)\"; \"Has 'Upcoming events' header: $\\($h -match 'Upcoming events'\\)\"; \"Has Sunday Skate event: $\\($h -match 'Sunday Skate at Connaught Place'\\)\"; \"Has Hero CTA: $\\($h -match 'See upcoming events'\\)\"; \"Has Footer IG handle: $\\($h -match '@delhiskatingcommunity'\\)\"; \"---events---\"; $e = \\(Invoke-WebRequest -Uri \"http://localhost:3000/events\" -UseBasicParsing\\).Content; \"Events page has Past events: $\\($e -match 'Past events'\\)\"; \"Events page has Holi Skate \\(past\\): $\\($e -match 'Holi Skate Meetup'\\)\"; \"Events page has Register button: $\\($e -match '>Register<'\\)\")",
+      "Read(//c/Users/Suresh/.claude/**)"
+    ]
+  }
+}
