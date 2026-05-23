@@ -32,3 +32,23 @@ export interface CommunityInfo {
   foundedYear: number;
   meetingCadence: string;
 }
+
+export interface GalleryImage {
+  id: string;
+  src: string;
+  alt: string;
+  caption?: string;
+  eventSlug?: string;
+  eventDate?: string;
+}
+
+export type LinkCategory = 'social' | 'video' | 'community' | 'partner';
+
+export interface CommunityLink {
+  id: string;
+  title: string;
+  url: string;
+  description?: string;
+  category: LinkCategory;
+  handle?: string;
+}

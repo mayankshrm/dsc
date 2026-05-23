@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(dsc-design)",
+      "Skill(dsc-design:*)",
+      "Bash(dir \"d:\\\\code\\\\dsc\\\\apps\\\\web\\\\src\\\\components\")",
+      "WebFetch(domain:docs.google.com)",
+      "Bash(Get-ChildItem -Path \"d:\\\\code\\\\dsc\\\\apps\\\\web\\\\src\" -Recurse -Directory)",
+      "Bash(Select-Object FullName)",
+      "Bash(yarn typecheck *)"
+    ]
+  }
+}

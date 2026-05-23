@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 const NAV = [
   { href: '/', label: 'Home', meta: 'Start here' },
   { href: '/events', label: 'Events', meta: 'Calendar' },
+  { href: '/gallery', label: 'Gallery', meta: 'Photos' },
   { href: '/about', label: 'About', meta: 'The Crew' },
   { href: '/contact', label: 'Contact', meta: 'Holler at us' },
 ];
@@ -115,7 +116,7 @@ export function Header() {
         {/* Tiny meta header */}
         <div className="flex items-center justify-between border-b-2 border-ink/15 px-4 py-2.5 font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-ink/50">
           <span>· Menu</span>
-          <span>04 sections</span>
+          <span>05 sections</span>
         </div>
 
         {/* Nav links — compact, single-line display type with index */}

@@ -3,9 +3,11 @@ import { Instagram, Mail, MapPin } from 'lucide-react';
 
 import { Container } from '@/components/layout/Container';
 import { ContactForm } from '@/components/contact/ContactForm';
+import { LinksSection } from '@/components/home/LinksSection';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { Sticker } from '@/components/ui/Sticker';
 import { buildMetadata, siteConfig } from '@/lib/seo';
+import { getLinks } from '@/data/lib/getLinks';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Contact',
@@ -14,7 +16,9 @@ export const metadata: Metadata = buildMetadata({
   path: '/contact',
 });
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const links = await getLinks();
+
   return (
     <>
       <Container className="pb-10 pt-12 md:pt-16">
@@ -140,6 +144,11 @@ export default function ContactPage() {
             </div>
           </section>
         </div>
+      </Container>
+
+      <SectionDivider label="Find Us" meta="CONNECT" />
+      <Container className="py-12 md:py-16">
+        <LinksSection links={links} />
       </Container>
     </>
   );
