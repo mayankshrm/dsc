@@ -23,15 +23,19 @@ export default async function HomePage() {
       <Hero tagline={community.tagline} />
       <UpcomingEvents events={upcoming} />
 
-      <SectionDivider label="Gallery" meta="DSC // DELHI" />
-      <Container className="py-12 md:py-16">
-        <GalleryTeaser images={galleryTeaser} />
-      </Container>
+      {galleryTeaser.length > 0 && (
+        <>
+          <SectionDivider label="Gallery" meta="DSC // DELHI" />
+          <Container className="py-12 md:py-16">
+            <GalleryTeaser images={galleryTeaser} />
+          </Container>
+        </>
+      )}
 
       <SectionDivider label="About" meta="EST 2019" />
       <AboutTeaser />
 
-      <SectionDivider label="Find Us" meta="CONNECT" />
+      <SectionDivider label="Further" meta="EXPLORE" />
       <Container className="py-12 md:py-16">
         <LinksSection links={links} />
       </Container>

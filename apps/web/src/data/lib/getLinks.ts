@@ -1,5 +1,5 @@
 import { contentfulClient } from '@/lib/contentful';
-import type { CommunityLink, LinkCategory } from './types';
+import type { CommunityLink, LinkType } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function toCommunityLink(entry: any): CommunityLink {
@@ -8,8 +8,8 @@ function toCommunityLink(entry: any): CommunityLink {
     id: entry.sys.id,
     title: f.title,
     url: f.url,
+    type: f.type as LinkType,
     description: f.description ?? undefined,
-    category: f.category as LinkCategory,
     handle: f.handle ?? undefined,
   };
 }

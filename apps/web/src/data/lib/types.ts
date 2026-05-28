@@ -42,13 +42,13 @@ export interface GalleryImage {
   eventDate?: string;
 }
 
-export type LinkCategory = 'social' | 'video' | 'community' | 'partner';
+export type LinkType = 'social' | 'video' | 'partner' | 'resource';
 
 export interface CommunityLink {
   id: string;
   title: string;
   url: string;
+  type: LinkType;
   description?: string;
-  category: LinkCategory;
   handle?: string;
 }

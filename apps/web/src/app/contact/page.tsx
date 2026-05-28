@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Instagram, Mail, MapPin } from 'lucide-react';
 
 import { Container } from '@/components/layout/Container';
-import { ContactForm } from '@/components/contact/ContactForm';
 import { LinksSection } from '@/components/home/LinksSection';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { Sticker } from '@/components/ui/Sticker';
@@ -42,111 +41,102 @@ export default async function ContactPage() {
         </div>
       </Container>
 
-      <SectionDivider label="Channels" meta="REPLIES IN 2-3 DAYS" />
+      <SectionDivider label="Contact" meta="REACH US" />
 
       <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-12 gap-8 md:gap-12">
-          {/* Channels */}
-          <aside className="col-span-12 md:col-span-5 lg:col-span-4">
-            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-ink/50">
-              · Reach us
-            </h2>
-            <ul className="mt-6 space-y-5">
-              <li>
-                <a
-                  href={siteConfig.socials.instagram}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="group block border-3 border-ink bg-paper p-5 -rotate-1 transition-all hover:rotate-0 hover:shadow-mag"
-                >
-                  <div className="flex items-center gap-3">
-                    <Instagram className="size-5 text-ink" />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/50">
-                      Instagram
-                    </span>
-                  </div>
-                  <p className="mt-2 font-display text-2xl uppercase leading-tight text-ink group-hover:text-primary">
-                    {siteConfig.socials.instagramHandle}
-                  </p>
-                  <p className="mt-1 font-serif text-sm italic text-ink/70">
-                    Follow for event announcements
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.socials.contactInstagram}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="group block border-3 border-ink bg-accent p-5 rotate-1 transition-all hover:rotate-0 hover:shadow-mag"
-                >
-                  <div className="flex items-center gap-3">
-                    <Instagram className="size-5 text-ink" />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/60">
-                      DM for queries
-                    </span>
-                  </div>
-                  <p className="mt-2 font-display text-2xl uppercase leading-tight text-ink">
-                    {siteConfig.socials.contactHandle}
-                  </p>
-                  <p className="mt-1 font-serif text-sm italic text-ink/80">
-                    Direct message gets the fastest reply
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contactEmail}`}
-                  className="group block border-3 border-ink bg-ink p-5 text-paper -rotate-1 transition-all hover:rotate-0 hover:shadow-mag-primary"
-                >
-                  <div className="flex items-center gap-3">
-                    <Mail className="size-5" />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-paper/50">
-                      Email
-                    </span>
-                  </div>
-                  <p className="mt-2 break-all font-mono text-base font-bold uppercase text-paper">
-                    {siteConfig.contactEmail}
-                  </p>
-                  <p className="mt-1 font-serif text-sm italic text-paper/70">
-                    Best for bookings & partnerships
-                  </p>
-                </a>
-              </li>
-              <li className="flex items-center gap-3 border-l-4 border-ink pl-4">
-                <MapPin className="size-5 shrink-0 text-ink" />
-                <div>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/50">
-                    Where
-                  </p>
-                  <p className="font-display text-xl uppercase leading-tight">Delhi-NCR</p>
-                  <p className="font-serif text-sm italic text-ink/70">
-                    Events at parks across the city
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </aside>
-
-          {/* Form */}
-          <section className="col-span-12 md:col-span-7 lg:col-span-8">
-            <div className="border-3 border-ink bg-paper p-6 shadow-mag md:p-8">
-              <h2 className="font-display text-super uppercase leading-none tracking-headline text-ink">
-                Send us a <span className="text-primary">message.</span>
-              </h2>
-              <p className="mt-3 font-serif text-lg italic text-ink/80">
-                Booking a workshop? Mention your school/college, expected number of students,
-                and a couple of date options.
-              </p>
-              <div className="mt-6">
-                <ContactForm />
+        {/* Three contact cards — stacked on mobile, side by side on md+ */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {/* Instagram main */}
+          <a
+            href={siteConfig.socials.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="group block border-3 border-ink bg-paper p-6 md:p-8 -rotate-1 transition-all duration-200 hover:rotate-0 hover:shadow-mag md:-rotate-1"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Instagram className="size-5 text-ink" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/50">
+                  Instagram
+                </span>
               </div>
+              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink/30">
+                01
+              </span>
             </div>
-          </section>
+            <p className="mt-5 font-display text-3xl uppercase leading-tight text-ink group-hover:text-primary md:text-2xl lg:text-3xl">
+              {siteConfig.socials.instagramHandle}
+            </p>
+            <p className="mt-3 font-serif text-base italic leading-snug text-ink/60">
+              Follow for event announcements, photos and updates.
+            </p>
+          </a>
+
+          {/* DM for queries — lime bg, slightly different rotation */}
+          <a
+            href={siteConfig.socials.contactInstagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="group block border-3 border-ink bg-accent p-6 md:p-8 rotate-1 transition-all duration-200 hover:rotate-0 hover:shadow-mag"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Instagram className="size-5 text-ink" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-ink/60">
+                  DM for queries
+                </span>
+              </div>
+              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink/30">
+                02
+              </span>
+            </div>
+            <p className="mt-5 font-display text-3xl uppercase leading-tight text-ink md:text-2xl lg:text-3xl">
+              {siteConfig.socials.contactHandle}
+            </p>
+            <p className="mt-3 font-serif text-base italic leading-snug text-ink/70">
+              Fastest reply. Questions about events, workshops, anything.
+            </p>
+          </a>
+
+          {/* Email — ink bg, inverted */}
+          <a
+            href={`mailto:${siteConfig.contactEmail}`}
+            className="group block border-3 border-ink bg-ink p-6 md:p-8 text-paper -rotate-1 transition-all duration-200 hover:rotate-0 hover:shadow-mag-primary"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Mail className="size-5 text-paper" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-paper/50">
+                  Email
+                </span>
+              </div>
+              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-paper/30">
+                03
+              </span>
+            </div>
+            <p className="mt-5 break-all font-mono text-lg font-bold uppercase text-paper md:text-base lg:text-lg">
+              {siteConfig.contactEmail}
+            </p>
+            <p className="mt-3 font-serif text-base italic leading-snug text-paper/60">
+              Best for bookings, partnerships and press.
+            </p>
+          </a>
+        </div>
+
+        {/* Location strip */}
+        <div className="mt-6 flex items-center gap-4 border-2 border-ink bg-paper px-6 py-4">
+          <MapPin className="size-5 shrink-0 text-ink/50" />
+          <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-display text-xl uppercase leading-tight text-ink">Delhi-NCR</span>
+            <span className="hidden font-mono text-[10px] text-ink/30 sm:inline">·</span>
+            <span className="font-serif text-sm italic text-ink/60">
+              Events at parks across the city — no fixed venue
+            </span>
+          </div>
         </div>
       </Container>
 
-      <SectionDivider label="Find Us" meta="CONNECT" />
+      <SectionDivider label="Further" meta="EXPLORE" />
       <Container className="py-12 md:py-16">
         <LinksSection links={links} />
       </Container>
