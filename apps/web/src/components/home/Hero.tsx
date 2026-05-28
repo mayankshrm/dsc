@@ -79,7 +79,7 @@ export function Hero({ tagline }: { tagline: string }) {
           {/* Mobile-only compact strip */}
           <div className="flex items-stretch border-3 border-ink lg:hidden">
             <div className="flex flex-1 items-center gap-3 bg-ink px-4 py-3 text-paper">
-              <span className="font-display text-3xl leading-none">~9.4K</span>
+              <span className="font-display text-3xl leading-none">~9.8K</span>
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-paper/70">
                 Skaters<br />on IG
               </span>
@@ -103,7 +103,7 @@ export function Hero({ tagline }: { tagline: string }) {
                 Roll call
               </p>
               <p className="mt-3 font-display text-7xl uppercase leading-[0.85] tracking-tight">
-                ~9.4k
+                ~9.8K
               </p>
               <p className="mt-1 font-serif text-base italic text-paper/80">
                 skaters following us on Instagram

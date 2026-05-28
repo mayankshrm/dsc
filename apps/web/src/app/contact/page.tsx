@@ -51,7 +51,7 @@ export default async function ContactPage() {
             href={siteConfig.socials.instagram}
             target="_blank"
             rel="noreferrer noopener"
-            className="group block border-3 border-ink bg-paper p-6 md:p-8 -rotate-1 transition-all duration-200 hover:rotate-0 hover:shadow-mag md:-rotate-1"
+            className="group block border-3 border-ink bg-paper p-6 md:p-8 -rotate-1 transition-all duration-200 hover:rotate-0 hover:shadow-mag"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export default async function ContactPage() {
                 01
               </span>
             </div>
-            <p className="mt-5 font-display text-3xl uppercase leading-tight text-ink group-hover:text-primary md:text-2xl lg:text-3xl">
+            <p className="mt-5 font-display text-xl uppercase leading-tight text-ink group-hover:text-primary lg:text-2xl">
               {siteConfig.socials.instagramHandle}
             </p>
             <p className="mt-3 font-serif text-base italic leading-snug text-ink/60">
